@@ -1,0 +1,21 @@
+FUNCTION Palindrome(mot: TABLEAU DE CARACTERE, n, i: INTEGER)
+BEGIN
+    SI (n = 0 OU n = 1) FAIRE
+        RETURN "Ce mot est un palindrome"; // 1ere condition d'arrêt
+    
+    SINON SI (mot[i] <> mot[n-1-i]) FAIRE  
+        RETURN "Ce mot n'est pas un palindrome"; // 2nde condition d'arrêt
+
+    SWITCH (n MOD 2) FAIRE
+        CASE 0: // mot paire: n MOD 2 = 0 
+            SI (i <= n/2) FAIRE // Afin que les 2 lettres du milieu soit comparer (A"BB"A)
+                RETURN Palindrome(mot, n, i+1);           
+            END_SI
+        CASE 1: n MOD 2 <> 0 // mot impaire:  n MOD 2 = 1
+            SI (i <= n/2 - 1) FAIRE // Afin que le la lettre du mileu ne soit pas comparer (ka"y"ak)
+                RETURN Palindrome(mot, n, i+1);
+            END SI        
+    END_SWITCH
+
+    RETURN "Ce mot est un palindrome";
+END_FUNCTION
