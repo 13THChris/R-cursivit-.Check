@@ -11,10 +11,13 @@ BEGIN
             SI (i <= n/2) FAIRE // Afin que les 2 lettres du milieu soit comparer (A"BB"A)
                 RETURN Palindrome(mot, n, i+1);           
             END_SI
+        BREAK;
+        
         CASE 1: n MOD 2 <> 0 // mot impaire:  n MOD 2 = 1
             SI (i <= n/2 - 1) FAIRE // Afin que le la lettre du mileu ne soit pas comparer (ka"y"ak)
                 RETURN Palindrome(mot, n, i+1);
-            END SI        
+            END_SI  
+        BREAK;      
     END_SWITCH
 
     RETURN "Ce mot est un palindrome";
